@@ -1,0 +1,327 @@
+/* ============================
+   CONTENEDOR GENERAL
+============================ */
+.header {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
+/* ============================
+   LOGO
+============================ */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoImg {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+}
+
+.logoTitle {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logoSubtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+
+/* ============================
+   NAV LINKS
+============================ */
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.navLinks li a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  padding-bottom: 5px;
+  transition: all 0.3s;
+}
+
+.navLinks li a:hover {
+  color: #f97316;
+  transform: translateY(-2px);
+}
+
+.navLinks li a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  transition: width 0.3s;
+}
+
+.navLinks li a:hover::after {
+  width: 100%;
+}
+
+
+/* ============================
+   BUSCADOR
+============================ */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.searchContainer {
+  position: relative;
+}
+
+.searchBtn {
+  background: linear-gradient(135deg, #334155, #475569);
+  color: #f97316;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchBtn:hover {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: white;
+  transform: scale(1.1) rotate(15deg);
+}
+
+.searchInput {
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 42px;
+  border-radius: 20px;
+  border: 2px solid #f97316;
+  padding: 0;
+  background: rgba(30, 41, 59, 0.95);
+  color: #f1f5f9;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.searchInput.active {
+  width: 240px;
+  padding: 0 1.2rem;
+  opacity: 1;
+}
+
+.searchInput::placeholder {
+  color: #94a3b8;
+}
+
+
+/* ============================
+   BOTÓN DEL CARRITO
+============================ */
+.cartBtn {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+}
+
+.cartBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.6);
+}
+
+.cartCount {
+  background: white;
+  color: #f97316;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+
+/* ============================
+   CARRITO LATERAL
+============================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100vh;
+  background: #1e293b;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+  padding: 1.5rem;
+  z-index: 101;
+  transition: right 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebarHeader button {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+
+/* ============================
+   PRODUCTOS EN EL CARRITO
+============================ */
+.sidebarItems {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 1rem;
+  padding-right: 5px;
+}
+
+.sidebarItem {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sidebarImage {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.sidebarInfo p {
+  margin: 0;
+  color: #e2e8f0;
+}
+
+.sidebarPrice {
+  color: #fb923c;
+  font-weight: 600;
+  margin: 3px 0;
+}
+
+.sidebarQuantity {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quantityButton {
+  background: #334155;
+  border: none;
+  width: 28px;
+  height: 28px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quantityButton:hover {
+  background: #f97316;
+}
+
+
+/* ============================
+   FOOTER DEL CARRITO
+============================ */
+.sidebarFooter {
+  border-top: 1px solid #334155;
+  padding-top: 1rem;
+}
+
+.clearButton {
+  background: #475569;
+  border: none;
+  padding: 0.7rem;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.checkoutButton {
+  background: #f97316;
+  border: none;
+  padding: 0.7rem;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.checkoutButton:hover {
+  background: #fb923c;
+}
