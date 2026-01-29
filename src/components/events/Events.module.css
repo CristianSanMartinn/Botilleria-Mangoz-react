@@ -47,6 +47,19 @@
   border-color: #f97316;
 }
 
+.featured::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(249, 115, 22, 0.25),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+
 .eventBadge {
   position: absolute;
   top: 1rem;
@@ -213,5 +226,19 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .eventsSection {
+    padding: 3rem 1rem;
+  }
+
+  .eventIconLarge {
+    font-size: 4rem;
+  }
+
+  .participationInfo {
+    padding: 2rem 1.5rem;
   }
 }

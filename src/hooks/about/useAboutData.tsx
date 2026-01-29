@@ -25,6 +25,6 @@ export const useAboutData = () => {
     paragraphs,
     values,
     photoBadge: "Desde 2008",
-    photoIcon: "🏪"
+    photoIcon: "🏪" // aca tiene que ir una foto de la botilleria
   };
 };

@@ -1,9 +1,8 @@
 import { useState } from "react";
-import logoImg from "../../assets/img/logon.jpg";
 
 export function useNavbarData() {
   const navbarImagenes = {
-    logo: logoImg,
+    logo: "/img/logon.jpg",
   };
 
   const [openCart, setOpenCart] = useState(false);
@@ -14,7 +13,7 @@ export function useNavbarData() {
       nombre: "Pisco Mistral 35° 750ml",
       precio: 9990,
       cantidad: 1,
-      imagen: "https://via.placeholder.com/80",
+      imagen: "/img/logon.jpg",
     },
   ]);
 

@@ -1,19 +1,29 @@
 // hooks/events/useEventsData.tsx
+import type { ReactNode } from "react";
+
+export type BadgeType = "featured" | "secondary";
+
+export interface Countdown {
+  days: number;
+  hours: number;
+  minutes: number;
+}
+
 export interface EventCardData {
   id: number;
   title: string;
   prize: string;
   description: string;
-  icon: string;
+  icon: ReactNode;
   badge: string;
-  badgeType: "featured" | "secondary";
-  countdown?: { days: number; hours: number; minutes: number };
+  badgeType: BadgeType;
+  countdown?: Countdown;
   button: string;
 }
 
 export interface Step {
   id: number;
-  number: string;
+  number: number;
   title: string;
   text: string;
 }
@@ -43,7 +53,7 @@ export const useEventsData = () => {
       badgeType: "secondary",
       button: "Participar"
     },
-    {
+     {
       id: 3,
       title: "Cliente del Mes",
       prize: "Premio: $50.000 en productos",
@@ -57,10 +67,10 @@ export const useEventsData = () => {
   ];
 
   const steps: Step[] = [
-    { id: 1, number: "1", title: "Compra", text: "Realiza tu compra en cualquiera de nuestros locales" },
-    { id: 2, number: "2", title: "Síguenos", text: "Sigue nuestras redes sociales @botilleriapremium" },
-    { id: 3, number: "3", title: "Participa", text: "Automáticamente entras en todos los sorteos activos" },
-    { id: 4, number: "4", title: "Gana", text: "Anunciamos ganadores en Instagram y WhatsApp" }
+    { id: 1, number: 1, title: "Compra", text: "Realiza tu compra en cualquiera de nuestros locales" },
+    { id: 2, number: 2, title: "Síguenos", text: "Sigue nuestras redes sociales @botilleriapremium" },
+    { id: 3, number: 3, title: "Participa", text: "Automáticamente entras en todos los sorteos activos" },
+    { id: 4, number: 4, title: "Gana", text: "Anunciamos ganadores en Instagram y WhatsApp" }
   ];
 
   return { events, steps };

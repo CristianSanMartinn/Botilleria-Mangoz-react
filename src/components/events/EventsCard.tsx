@@ -1,6 +1,6 @@
 // components/events/EventCard.tsx
 import styles from "./Events.module.css";
-import { EventCardData } from "../../hooks/events/useEventsData";
+import type { EventCardData } from "../../hooks/events/useEventsData";
 
 interface Props {
   event: EventCardData;
@@ -15,7 +15,7 @@ export const EventCard: React.FC<Props> = ({ event }) => {
     >
       <div
         className={`${styles.eventBadge} ${
-          event.badgeType === "secondary" ? styles.secondary : ""
+          event.badgeType === "secondary" ? styles.badgeSecondary : ""
         }`}
       >
         {event.badge}
@@ -30,25 +30,17 @@ export const EventCard: React.FC<Props> = ({ event }) => {
       {event.countdown && (
         <div className={styles.eventCountdown}>
           <div className={styles.countdownItem}>
-            <span className={styles.countdownNumber}>{event.countdown.days}</span>
+            <span className={styles.countdownNumber}>
+              {event.countdown.days}
+            </span>
             <span className={styles.countdownLabel}>Días</span>
-          </div>
-
-          <div className={styles.countdownItem}>
-            <span className={styles.countdownNumber}>{event.countdown.hours}</span>
-            <span className={styles.countdownLabel}>Horas</span>
-          </div>
-
-          <div className={styles.countdownItem}>
-            <span className={styles.countdownNumber}>{event.countdown.minutes}</span>
-            <span className={styles.countdownLabel}>Min</span>
           </div>
         </div>
       )}
 
       <button
         className={`${styles.eventBtn} ${
-          event.badgeType === "secondary" ? styles.secondary : ""
+          event.badgeType === "secondary" ? styles.secondaryBtn : ""
         }`}
       >
         {event.button}
@@ -56,5 +48,3 @@ export const EventCard: React.FC<Props> = ({ event }) => {
     </div>
   );
 };
-
-export default EventCard;
