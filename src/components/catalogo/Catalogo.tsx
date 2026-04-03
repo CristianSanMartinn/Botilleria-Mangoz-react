@@ -1,13 +1,13 @@
 import styles from "./Catalogo.module.css";
-import { useProductoData } from "../../hooks/producto/useProductoData";
-import { ProductoCard } from "../productoCard/ProductoCard";
+import { useProductoData } from "../../hooks/producto/useProductoDate";
+import ProductoCard from "../productos/ProductoCard";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Catalogo = () => {
-  const { productos } = useProductoData();
+  const { productos, categoriaActiva, setCategoriaActiva } = useProductoData();
 
   return (
     <section className={styles.section}>
-      {/* HEADER */}
       <div className={styles.header}>
         <h2 className={styles.titulo}>Catálogo Mangoz</h2>
 
@@ -16,16 +16,15 @@ const Catalogo = () => {
           en nuestras botillerías de Melipilla 🍷🍺
         </p>
 
-        {/* Separador */}
         <div className={styles.separador}>
           <span className={styles.linea}>
             <span className={styles.circulo}></span>
           </span>
         </div>
 
-        {/* Categorías */}
         <div className={styles.categorias}>
           {[
+            "Todo",
             "Bebidas",
             "Vinos",
             "Licores",
@@ -35,7 +34,13 @@ const Catalogo = () => {
             "Tequila",
             "Ofertas",
           ].map((categoria) => (
-            <button key={categoria} className={styles.btn}>
+            <button
+              key={categoria}
+              className={`${styles.btn} ${
+                categoriaActiva === categoria ? styles.activo : ""
+              }`}
+              onClick={() => setCategoriaActiva(categoria)}
+            >
               {categoria}
             </button>
           ))}
@@ -44,9 +49,18 @@ const Catalogo = () => {
 
       {/* GRID */}
       <div className={styles.grid}>
-        {productos.map((producto) => (
-          <ProductoCard key={producto.id} producto={producto} />
-        ))}
+        {productos.length > 0 ? (
+          productos.map((producto) => (
+            <ProductoCard key={producto.id} producto={producto} />
+          ))
+        ) : (
+          <div className={styles.vacio}>
+            <p>
+              No hay productos disponibles en esta categoría 
+              <FaShoppingCart className={styles.iconoVacio} />
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

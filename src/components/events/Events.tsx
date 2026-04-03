@@ -1,6 +1,7 @@
 import styles from "./Events.module.css";
 import { useEventsData } from "../../hooks/events/useEventsData";
 import { EventCard } from "./EventsCard";
+import { FaGift } from "react-icons/fa";
 import { ParticipationStep } from "./ParticipationStep";
 
 export const Events: React.FC = () => {
@@ -9,10 +10,16 @@ export const Events: React.FC = () => {
   return (
     <section className={styles.eventsSection} id="eventos">
       <div className={styles.eventsContainer}>
+        
         <div className={styles.sectionHeader}>
-          <h2>🎉 Eventos y Sorteos</h2>
+          <h2>
+              <FaGift className={styles.titleIcon} />
+              Eventos y Sorteos
+          </h2>
           <p id="events-subtitle">¡Participa y gana increíbles premios!</p>
         </div>
+
+        <div className={styles.titleDivider}></div>
 
         <div className={styles.eventsGrid}>
           {events.map((event) => (

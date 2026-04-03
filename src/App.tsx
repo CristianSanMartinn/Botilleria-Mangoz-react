@@ -8,25 +8,26 @@ import { SucursalSelector } from "./components/sucursales/SucursalSelector";
 import { Events } from "./components/events/Events"; 
 import Contacto from "./components/contacto/Contacto";
 import Footer from "./components/footer/Footer";
-import { CartProvider } from "./context/CartContext";
-
+import WhatsAppButton from "./components/btn-wsp/wsp";
 import "./App.css";
-
-
 
 const App: React.FC = () => {
   return (
-    <CartProvider>
+    <>
+    
+      <WhatsAppButton/>
       <Navbar /> {/*Listo y responsivo 768*/}
       <Hero />
       <Offers/>
       <Catalogo/>
+
       <Events/>
       <About/>   {/*aca se tiene que colocar una foto de la botilleria*/}
       <SucursalSelector/>
       <Contacto/>
       <Footer/>
-    </CartProvider>
+    </>
+    
   );
 };
 
@@ -45,6 +46,4 @@ export default App;
   - sucursalCard      X se tiene que hablar
   - Constacto         X
   - footer
-  
-  
   **/}

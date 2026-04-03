@@ -5,7 +5,7 @@ export interface ValueItem {
 }
 
 export const useAboutData = () => {
-  const title = "🏆 Sobre Nosotros";
+  const title = "Sobre Nosotros";
   const subtitle = "Más de 15 años sirviendo a Melipilla";
 
   const paragraphs = [

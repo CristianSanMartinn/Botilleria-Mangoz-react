@@ -4,7 +4,7 @@
   padding: 4rem 2rem 0;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,6 +14,7 @@
 }
 
 /* BRAND */
+
 .brand {
   display: flex;
   flex-direction: column;
@@ -22,7 +23,6 @@
 
 .brand img {
   width: 80px;
-  margin-bottom: 0.5rem;
 }
 
 .brand h3 {
@@ -37,14 +37,56 @@
   line-height: 1.5;
 }
 
-/* LINKS / REDES / HISTORIA */
+/* TITULOS */
+
 .links h4,
 .redes h4,
 .historia h4 {
   font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: #f8fafc;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
+/* LINEA DIVISORIA */
+
+.divider1 {
+  height: 3px;
+  width: 100%;
+  max-width: 140px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  animation: dividerGlow 3s ease-in-out infinite;
+}
+
+.divider2 {
+  height: 3px;
+  width: 100%;
+  max-width: 80px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  animation: dividerGlow 3s ease-in-out infinite;
+}
+
+.divider3 {
+  height: 3px;
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  animation: dividerGlow 3s ease-in-out infinite;
+}
+
+
+
+/* LINKS */
 
 .links ul,
 .redes ul {
@@ -77,21 +119,14 @@
   max-width: 420px;
 }
 
-.historia h4 {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #f8fafc;
-}
-
-.historia p {
+.textoHistoria {
   font-size: 0.95rem;
   color: #94a3b8;
   line-height: 1.7;
-  text-align: left;
 }
 
-
 /* FOOTER BOTTOM */
+
 .bottom {
   margin-top: 3rem;
   padding: 1.2rem 0;
@@ -104,7 +139,24 @@
   color: #64748b;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ANIMACION LINEA */
+
+@keyframes dividerGlow {
+  0% {
+    opacity: 0.6;
+    transform: scaleX(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scaleX(0.9);
+  }
+}
+
+/* RESPONSIVE */
 
 @media (max-width: 1024px) {
   .container {
@@ -123,19 +175,21 @@
     align-items: center;
   }
 
+  .divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .links a:hover,
   .redes a:hover {
     transform: none;
   }
-}
 
-@media (max-width: 640px) {
   .historia {
     max-width: 100%;
   }
 
-  .historia p {
+  .textoHistoria {
     text-align: center;
   }
 }
-

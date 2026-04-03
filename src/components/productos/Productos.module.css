@@ -1,0 +1,88 @@
+/* CARD */
+.card {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  border-radius: 18px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(249, 115, 22, 0.25);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+}
+
+/* IMAGEN */
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* NOMBRE */
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+/* DESCRIPCIÓN */
+.card p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+  min-height: 40px;
+}
+
+/* PRECIO */
+.precio {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #f97316;
+  margin-bottom: 0.8rem;
+}
+
+/* BADGE DISPONIBLE */
+.disponible {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  width: fit-content;
+}
+
+/* BADGE NO DISPONIBLE */
+.noDisponible {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  width: fit-content;
+}
+.categoria {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}

@@ -1,8 +1,9 @@
-// hooks/sucursal/useSucursalDate.tsx
 import { useState } from "react";
 
+/** Tipos de entrega disponibles */
 export type TipoEntrega = "retiro" | "domicilio";
 
+/** Modelo de sucursal */
 export interface Sucursal {
   id: number;
   nombre: string;
@@ -11,24 +12,26 @@ export interface Sucursal {
   horario: string;
 }
 
+/** Sucursales fijas (landing page) */
 const SUCURSALES: Sucursal[] = [
   {
     id: 1,
     nombre: "Botillería Mangoz Centro",
     direccion: "Av. Vicuña Mackenna 123, Melipilla",
-    telefono: "+56 9 1234 5678",
-    horario: "Lun a Dom 10:00 – 23:00",
+    telefono: "+56912345678",
+    horario: "Lun a Dom · 10:00 – 23:00",
   },
   {
     id: 2,
     nombre: "Botillería Mangoz Norte",
     direccion: "Camino a Pomaire 456, Melipilla",
-    telefono: "+56 9 8765 4321",
-    horario: "Lun a Dom 11:00 – 22:00",
+    telefono: "+56987654321",
+    horario: "Lun a Dom · 11:00 – 22:00",
   },
 ];
 
-export function useSucursal() {
+/** Hooks principal */
+export function useSucursalDate() {
   const [sucursalSeleccionada, setSucursalSeleccionada] =
     useState<Sucursal | null>(null);
 
@@ -37,8 +40,10 @@ export function useSucursal() {
 
   return {
     sucursales: SUCURSALES,
+
     sucursalSeleccionada,
     tipoEntrega,
+
     setSucursalSeleccionada,
     setTipoEntrega,
   };

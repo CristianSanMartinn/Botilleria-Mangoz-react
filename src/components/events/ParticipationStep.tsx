@@ -1,6 +1,6 @@
 // components/events/ParticipationStep.tsx
 import styles from "./Events.module.css";
-import { Step } from "../../hooks/events/useEventsData";
+import type { Step } from "../../hooks/events/useEventsData";
 
 interface Props {
   step: Step;
@@ -17,5 +17,3 @@ export const ParticipationStep: React.FC<Props> = ({ step }) => {
     </div>
   );
 };
-
-export default ParticipationStep;

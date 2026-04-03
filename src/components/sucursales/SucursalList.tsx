@@ -19,7 +19,7 @@ export const SucursalList = () => {
       </p>
 
       <div className={styles.grid}>
-        {sucursales.map((sucursal) => (
+        {sucursales.map((Sucursal) => (
           <SucursalCard
             key={sucursal.id}
             sucursal={sucursal}

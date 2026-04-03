@@ -1,7 +1,5 @@
-// components/sucursal/SucursalSelector.tsx
-import { useState } from "react";
 import styles from "./SucursalCard.module.css";
-import { useSucursal } from "../../hooks/sucursal/useSucursalDate";
+import { useSucursalDate } from "../../hooks/sucursal/useSucursalDate";
 import SucursalCard from "./SucursalCard";
 
 export const SucursalSelector = () => {
@@ -11,27 +9,22 @@ export const SucursalSelector = () => {
     setTipoEntrega,
     sucursalSeleccionada,
     tipoEntrega,
-  } = useSucursal();
-
-  // Estado local para controlar selección visual (puedes usar context si quieres)
-  // Aquí usamos el estado de hook para selección y tipo
+  } = useSucursalDate();
 
   return (
     <section className={styles.section}>
-      <h2>¿Dónde quieres recibir tu pedido?</h2>
+      <h2 className={styles.titulo}>¿Dónde quieres recibir tu pedido?</h2>
 
       <div className={styles.grid}>
         {sucursales.map((sucursal) => {
-          const isSelected =
-            sucursalSeleccionada?.id === sucursal.id && tipoEntrega === "retiro";
-          const isSelectedDelivery =
-            sucursalSeleccionada?.id === sucursal.id && tipoEntrega === "domicilio";
+          const selected =
+            sucursalSeleccionada?.id === sucursal.id;
 
           return (
             <SucursalCard
               key={sucursal.id}
               sucursal={sucursal}
-              selected={isSelected || isSelectedDelivery}
+              selected={selected}
               onSelectRetiro={() => {
                 setSucursalSeleccionada(sucursal);
                 setTipoEntrega("retiro");
@@ -44,20 +37,21 @@ export const SucursalSelector = () => {
           );
         })}
 
+        {/* CARD SOLO DOMICILIO */}
         <SucursalCard
           isDomicilio
-          selected={!sucursalSeleccionada && tipoEntrega === "domicilio"}
-          onSelectDelivery={() => {
-            setSucursalSeleccionada(null);
-            setTipoEntrega("domicilio");
-          }}
-          onSelectRetiro={() => {}}
+          selected={tipoEntrega === "domicilio" && !sucursalSeleccionada}
           sucursal={{
             id: -1,
             nombre: "",
             direccion: "",
             telefono: "",
             horario: "",
+          }}
+          onSelectRetiro={() => {}}
+          onSelectDelivery={() => {
+            setSucursalSeleccionada(null);
+            setTipoEntrega("domicilio");
           }}
         />
       </div>
