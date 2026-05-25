@@ -1,48 +1,77 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className={styles.header}>
-      <nav className={styles.nav}>
-        
-        {/* LOGO */}
-        <div className={styles.logo}>
-          <img
-            src="/img/logon.jpg"
-            alt="Logo Barbería"
-            className={styles.logoImg}
-          />
-          <h1 className={styles.logoTitle}>Botilleria Mangoz</h1>
-        </div>
+    <>
+      {/* Franja promocional superior */}
+      <div className={styles.promoStrip}>
+        🍺 DESPACHO EXPRESS A DOMICILIO &nbsp;·&nbsp; ABIERTO HASTA LAS 2AM
+        &nbsp;·&nbsp; PRECIOS ÚNICOS EN MELIPILLA
+      </div>
 
-        {/* BOTÓN HAMBURGUESA */}
-        <div
-          className={`${styles.hamburguesa} ${menuOpen ? styles.activo : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+        <nav className={styles.nav}>
+          {/* LOGO */}
+          <div className={styles.logo}>
+            <div className={styles.logoBox}>
+              <img
+                src="/img/logon.jpg"
+                alt="Logo Botillería Mangoz"
+                className={styles.logoImg}
+              />
+            </div>
+            <div className={styles.logoTexts}>
+              <h1 className={styles.logoTitle}>Mangoz</h1>
+              <span className={styles.logoSub}>Botillería</span>
+            </div>
+          </div>
 
-        {/* LINKS */}
-        <ul
-          className={`${styles.navLinks} ${
-            menuOpen ? styles.menuAbierto : ""
-          }`}
-        >
-          <li><a href="#inicio" onClick={() => setMenuOpen(false)}>Inicio</a></li>
-          <li><a href="#nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a></li>
-          <li><a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a></li>
-          <li><a href="#barberos" onClick={() => setMenuOpen(false)}>Barberos</a></li>
-          <li><a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a></li>
-        </ul>
+          {/* LINKS DESKTOP */}
+          <ul className={`${styles.navLinks} ${menuOpen ? styles.menuAbierto : ""}`}>
+            {[
+              { href: "#inicio", label: "Inicio" },
+              { href: "#productos", label: "Productos" },
+              { href: "#ofertas", label: "Ofertas" },
+              { href: "#ubicaciones", label: "Tiendas" },
+              { href: "#contacto", label: "Contacto" },
+            ].map(({ href, label }) => (
+              <li key={href}>
+                <a href={href} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-      </nav>
-    </header>
+          {/* CTA + HAMBURGUESA */}
+          <div className={styles.navRight}>
+            <a href="#productos" className={styles.ctaBtn}>
+              Pedir Ahora
+            </a>
+            <button
+              className={`${styles.hamburguesa} ${menuOpen ? styles.activo : ""}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Abrir menú"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 };
 

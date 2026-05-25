@@ -1,7 +1,7 @@
+import React from "react";
 import styles from "./Events.module.css";
 import { useEventsData } from "../../hooks/events/useEventsData";
 import { EventCard } from "./EventsCard";
-import { FaGift } from "react-icons/fa";
 import { ParticipationStep } from "./ParticipationStep";
 
 export const Events: React.FC = () => {
@@ -10,32 +10,43 @@ export const Events: React.FC = () => {
   return (
     <section className={styles.eventsSection} id="eventos">
       <div className={styles.eventsContainer}>
-        
+
+        {/* Header */}
         <div className={styles.sectionHeader}>
-          <h2>
-              <FaGift className={styles.titleIcon} />
-              Eventos y Sorteos
-          </h2>
-          <p id="events-subtitle">¡Participa y gana increíbles premios!</p>
+          <span className={styles.eyebrow}>Premios y sorteos</span>
+          <h2 className={styles.titulo}>Eventos Mangoz</h2>
+          <div className={styles.titleRule} />
+          <p className={styles.subtitle}>
+            Cada compra es una oportunidad de ganar. ¡Participa y llévate increíbles premios!
+          </p>
         </div>
 
-        <div className={styles.titleDivider}></div>
-
+        {/* Cards */}
         <div className={styles.eventsGrid}>
           {events.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
         </div>
 
+        {/* Pasos */}
         <div className={styles.participationInfo}>
-          <h3>🎯 ¿Cómo Participar?</h3>
+          <div className={styles.participationHeader}>
+            <span className={styles.eyebrow}>Es muy fácil</span>
+            <h3 className={styles.participationTitle}>¿Cómo Participar?</h3>
+          </div>
 
           <div className={styles.participationSteps}>
-            {steps.map((step) => (
-              <ParticipationStep key={step.id} step={step} />
+            {steps.map((step, i) => (
+              <React.Fragment key={step.id}>
+                <ParticipationStep step={step} />
+                {i < steps.length - 1 && (
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

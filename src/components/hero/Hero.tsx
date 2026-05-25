@@ -6,9 +6,8 @@ export default function Hero() {
 
   return (
     <section className={styles.hero} id="inicio">
-      <div className={styles.promoBanner}>🎉 OFERTAS</div>
-
-      <div className={styles.floatingIcons}>
+      {/* Iconos flotantes decorativos */}
+      <div className={styles.floatingIcons} aria-hidden="true">
         {floatingIcons.map((icon, i) => (
           <div key={i} className={styles.floatingIcon}>
             {icon}
@@ -16,8 +15,26 @@ export default function Hero() {
         ))}
       </div>
 
+      {/* Líneas de fondo decorativas */}
+      <div className={styles.bgLines} aria-hidden="true">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className={styles.bgLine} />
+        ))}
+      </div>
+
       <div className={styles.heroContent}>
-        <div className={styles.promoCarousel}>
+        {/* Badge de estado */}
+        <div className={styles.badge}>
+          <span className={styles.badgeDot} />
+          Los mejores precios de Melipilla
+        </div>
+
+        {/* Título principal */}
+        <h2 className={styles.heroTitle}>Botillería</h2>
+        <div className={styles.heroTitleAccent}>Mangoz</div>
+
+        {/* Carrusel de promos */}
+        <div className={styles.promoCarousel} aria-live="polite">
           {slides.map((s, i) => (
             <div
               key={i}
@@ -25,27 +42,36 @@ export default function Hero() {
                 i === activeIndex ? styles.active : ""
               }`}
             >
-              <span className={styles.promoIcon}>{s.icon}</span>
+              <span className={styles.promoIcon} aria-hidden="true">
+                {s.icon}
+              </span>
               <span className={styles.promoText}>{s.text}</span>
             </div>
           ))}
         </div>
 
-        <div className={styles.badge}>✨ Los mejores precios de Melipilla</div>
+        <p className={styles.heroDesc}>
+          Amplio surtido de bebidas nacionales e importadas. Precios
+          imbatibles y despacho rápido a tu puerta.
+        </p>
 
-        <h2>Tu Botillería de Confianza en Melipilla</h2>
-        <p>Amplio surtido de bebidas, los mejores precios y entrega rápida</p>
-
+        {/* Botones */}
         <div className={styles.heroButtons}>
           <a href="#productos" className={styles.ctaButton}>
-            Ver Productos 🛒
+            Ver Catálogo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </a>
-
           <a href="#ubicaciones" className={`${styles.ctaButton} ${styles.secondary}`}>
-            📍 Nuestras Tiendas
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M12 21s-8-6.686-8-12a8 8 0 0 1 16 0c0 5.314-8 12-8 12z"/><circle cx="12" cy="9" r="3"/>
+            </svg>
+            Nuestras Tiendas
           </a>
         </div>
 
+        {/* Stats */}
         <div className={styles.statsSection}>
           {stats.map((stat, i) => (
             <div key={i} className={styles.statItem}>

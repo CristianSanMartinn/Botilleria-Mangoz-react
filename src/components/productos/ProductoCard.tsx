@@ -7,27 +7,44 @@ interface Props {
 
 const ProductoCard = ({ producto }: Props) => {
   return (
-    <div className={styles.card}>
-      <img src={producto.imagen} alt={producto.nombre} />
+    <article className={`${styles.card} ${!producto.disponible ? styles.cardAgotado : ""}`}>
 
-      <h3>{producto.nombre}</h3>
+      {/* Imagen */}
+      <div className={styles.imgWrap}>
+        <img
+          src={producto.imagen}
+          alt={producto.nombre}
+          className={styles.img}
+          loading="lazy"
+        />
+        {/* Badge de categoría */}
+        <span className={styles.catBadge}>{producto.categoria}</span>
+        {/* Overlay agotado */}
+        {!producto.disponible && (
+          <div className={styles.agotadoOverlay}>Agotado</div>
+        )}
+      </div>
 
-      <span className={styles.categoria}>
-        {producto.categoria}
-      </span>
+      {/* Contenido */}
+      <div className={styles.body}>
+        <h3 className={styles.nombre}>{producto.nombre}</h3>
+        <p className={styles.descripcion}>{producto.descripcion}</p>
 
-      <p>{producto.descripcion}</p>
+        <div className={styles.footer}>
+          <span className={styles.precio}>
+            ${producto.precio.toLocaleString("es-CL")}
+          </span>
 
-      <p
-        className={
-          producto.disponible
-            ? styles.disponible
-            : styles.noDisponible
-        }
-      >
-        {producto.disponible ? "Disponible" : "No disponible"}
-      </p>
-    </div>
+          <button
+            className={styles.addBtn}
+            disabled={!producto.disponible}
+            aria-label={`Agregar ${producto.nombre} al carrito`}
+          >
+            {producto.disponible ? "Agregar" : "Sin stock"}
+          </button>
+        </div>
+      </div>
+    </article>
   );
 };
 

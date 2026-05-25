@@ -7,7 +7,13 @@ export default function Offers() {
   return (
     <section className={styles.specialOffers} id="ofertas">
       <div className={styles.offersContainer}>
-        <h2>🔥 Ofertas Especiales de la Semana</h2>
+
+        {/* Header */}
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionEyebrow}>Esta semana</span>
+          <h2 className={styles.sectionTitle}>Ofertas Especiales</h2>
+          <div className={styles.titleRule} />
+        </div>
 
         {/* Carrusel */}
         <div className={styles.offersCarousel}>
@@ -19,14 +25,22 @@ export default function Offers() {
               }`}
             >
               <div className={styles.offerContent}>
-                <div className={styles.offerIcon}>{slide.icon}</div>
+                {/* Shine sweep */}
+                <div className={styles.shineSweep} aria-hidden="true" />
 
+                {/* Ícono */}
+                <div className={styles.offerIconWrap}>
+                  <div className={styles.offerIcon}>{slide.icon}</div>
+                </div>
+
+                {/* Info */}
                 <div className={styles.offerInfo}>
                   <h3>{slide.titulo}</h3>
                   <p className={styles.offerDiscount}>{slide.descuento}</p>
                   <p className={styles.offerDescription}>{slide.descripcion}</p>
                 </div>
 
+                {/* Badge */}
                 <div className={styles.offerBadge}>{slide.badge}</div>
               </div>
             </div>
@@ -36,17 +50,17 @@ export default function Offers() {
         {/* Dots */}
         <div className={styles.offersDots}>
           {slides.map((_, i) => (
-            <span
+            <button
               key={i}
+              aria-label={`Ir a oferta ${i + 1}`}
               className={`${styles.offerDot} ${
                 activeIndex === i ? styles.offerDotActive : ""
               }`}
               onClick={() => changeSlide(i)}
-            ></span>
+            />
           ))}
         </div>
       </div>
     </section>
   );
 }
-

@@ -1,143 +1,233 @@
+/* ================================
+   SECCIÓN
+================================ */
 .aboutUs {
-  padding: 5rem 2rem;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  padding: 6rem 2rem;
+  background: #0d0d14;
   position: relative;
+  overflow: hidden;
 }
 
-/* Container */
+.aboutUs::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 100% 50%, rgba(234,179,8,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
 .aboutContainer {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* Layout */
+/* ================================
+   LAYOUT GRID
+================================ */
 .aboutContent {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
 }
 
-/* Text */
-.aboutText h2 {
-  font-size: 2.5rem;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ================================
+   TEXTO
+================================ */
+.aboutText {
+  display: flex;
+  flex-direction: column;
 }
 
-.aboutText h3 {
-  color: #cbd5e1;
-  font-size: 1.5rem;
-  margin: 0 0 2rem 0;
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #eab308;
+  margin-bottom: 0.75rem;
+}
+
+.aboutText h2 {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 4rem;
   font-weight: 400;
+  letter-spacing: 3px;
+  color: #e7e5e4;
+  margin: 0 0 1rem;
+  line-height: 1;
+}
+
+.subtitle {
+  color: #78716c;
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+  font-weight: 300;
+  line-height: 1.7;
 }
 
 .aboutText p {
-  color: #94a3b8;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  color: #57534e;
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  font-weight: 300;
 }
 
-/* Values */
+/* ================================
+   VALUES
+================================ */
 .aboutValues {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
 .valueItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, transparent 100%);
-  border: 2px solid rgba(249, 115, 22, 0.2);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s;
+  gap: 1.2rem;
+  background: rgba(234,179,8,0.03);
+  border: 1px solid rgba(234,179,8,0.12);
+  border-left: 3px solid rgba(234,179,8,0.5);
+  border-radius: 0 12px 12px 0;
+  padding: 1.1rem 1.4rem;
+  transition: all 0.3s ease;
 }
 
 .valueItem:hover {
-  border-color: #f97316;
-  transform: translateX(10px);
-  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
+  background: rgba(234,179,8,0.07);
+  border-left-color: #eab308;
+  transform: translateX(6px);
 }
 
 .valueIcon {
-  font-size: 2.5rem;
-  animation: float 3s ease-in-out infinite;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 44px;
+  text-align: center;
 }
 
 .valueText h4 {
-  margin: 0 0 0.25rem 0;
-  color: #f97316;
-  font-size: 1.25rem;
+  margin: 0 0 0.2rem;
+  color: #e7e5e4;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .valueText p {
   margin: 0;
-  color: #cbd5e1;
-  font-size: 0.95rem;
+  color: #57534e;
+  font-size: 0.83rem;
+  line-height: 1.5;
 }
 
-/* Image side */
+/* ================================
+   IMAGEN / FOTO
+================================ */
 .aboutImage {
-  position: relative;
-}
-
-.aboutPhoto {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.photoFrame {
-  background: linear-gradient(135deg, #334155 0%, #475569 100%);
-  border-radius: 24px;
-  padding: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border: 4px solid rgba(249, 115, 22, 0.3);
-  transition: all 0.3s;
+}
+
+.photoOuter {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+/* Anillo externo giratorio */
+.photoRing {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px dashed rgba(234,179,8,0.2);
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.photoFrame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #1c1a10, #0a0a0f);
+  border: 2px solid rgba(234,179,8,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8rem;
+  box-shadow:
+    0 0 0 1px rgba(234,179,8,0.08),
+    0 24px 60px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(234,179,8,0.1);
+  transition: border-color 0.4s;
+  overflow: hidden;
 }
 
 .photoFrame:hover {
-  transform: scale(1.05);
-  border-color: #f97316;
-  box-shadow: 0 25px 75px rgba(249, 115, 22, 0.4);
+  border-color: rgba(234,179,8,0.5);
 }
 
 .photoBadge {
   position: absolute;
-  bottom: 2rem;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  background: linear-gradient(135deg, #eab308, #ca8a04);
+  color: #0a0a0f;
+  padding: 0.55rem 1.6rem;
+  border-radius: 100px;
   font-weight: 700;
-  font-size: 1.1rem;
-  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
-  animation: pulse 2s ease-in-out infinite;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(234,179,8,0.4);
 }
 
-/* Animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  background: #0a0a0f;
+  border-radius: 50%;
+  opacity: 0.5;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .aboutContent {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .aboutImage {
+    order: -1;
+  }
+
+  .photoOuter {
+    width: 240px;
+    height: 240px;
+  }
+
+  .photoFrame {
+    font-size: 6rem;
+  }
+
+  .aboutText h2 {
+    font-size: 3rem;
+  }
 }

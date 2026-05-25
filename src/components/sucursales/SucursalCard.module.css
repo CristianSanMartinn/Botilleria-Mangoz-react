@@ -1,171 +1,290 @@
-/* SECTION */
+/* ================================
+   SECCIÓN
+================================ */
 .section {
-  padding: 6rem 3rem;
-  background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+  padding: 6rem 2rem;
+  background: #0d0d14;
+  position: relative;
+  overflow: hidden;
 }
 
-/* TITULO */
-.section h2 {
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(234,179,8,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(234,179,8,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ================================
+   HEADER
+================================ */
+.sectionHeader {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
   text-align: center;
-  font-size: 2.6rem;
-  font-weight: 800;
-  margin-bottom: 4rem;
-  background: linear-gradient(135deg, #f97316, #fb923c);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
-/* GRID */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #eab308;
+  margin-bottom: 0.75rem;
+}
+
+.titulo {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #e7e5e4;
+  margin: 0 0 1.2rem;
+  line-height: 1;
+}
+
+.titleRule {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #eab308, transparent);
+  margin: 0 auto 1.5rem;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  color: #44403c;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ================================
+   GRID
+================================ */
 .grid {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
 }
 
-/* CARD */
+/* ================================
+   CARD BASE
+================================ */
 .card {
-  background: rgba(30, 41, 59, 0.9);
+  background: #0f0f18;
+  border: 1px solid rgba(234,179,8,0.12);
   border-radius: 18px;
-  padding: 2.2rem 2rem;
-  border: 1px solid rgba(249, 115, 22, 0.2);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
+  padding: 2rem 1.8rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  min-height: 320px;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at top,
-    rgba(249, 115, 22, 0.25),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover::before {
-  opacity: 1;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(249, 115, 22, 0.5);
-  box-shadow: 0 20px 55px rgba(249, 115, 22, 0.45);
+  border-color: rgba(234,179,8,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(234,179,8,0.06);
 }
 
-.card h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #f8fafc;
-  margin-bottom: 1rem;
-}
-
-.card p {
-  color: #94a3b8;
-  font-size: 0.95rem;
-  margin-bottom: 0.6rem;
-}
-
-/* Contenedor botones */
-.actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: auto;
-}
-
-/* Botones secundarios */
-.btnPrimary, .btnSecondary {
-  flex: 1;
-  padding: 0.7rem 0;
-  border-radius: 999px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
-  color: white;
-}
-
-.btnPrimary {
-  background: linear-gradient(135deg, #f97316, #ea580c);
-}
-
-.btnPrimary:hover {
-  background: linear-gradient(135deg, #ea580c, #f97316);
-  box-shadow: 0 10px 35px rgba(249, 115, 22, 0.7);
-}
-
-.btnSecondary {
-  background: linear-gradient(135deg, #fb923c, #f97316);
-}
-
-.btnSecondary:hover {
-  background: linear-gradient(135deg, #f97316, #fb923c);
-  box-shadow: 0 10px 35px rgba(249, 115, 22, 0.7);
-}
-
-/* BOTÓN genérico (en caso de uso aparte) */
-.card button {
-  margin-top: 1.6rem;
-  width: 100%;
-  padding: 0.7rem;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #f97316, #ea580c);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
-}
-
-.card button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 35px rgba(249, 115, 22, 0.7);
-}
-
-/* Destacar tarjeta de domicilio */
+/* Card domicilio: borde punteado */
 .domicilioCard {
   border-style: dashed;
-  background: rgba(249, 115, 22, 0.1);
+  background: rgba(234,179,8,0.02);
 }
 
-/* Estado seleccionado */
+/* ================================
+   ESTADO SELECCIONADO
+================================ */
 .selected {
-  border-color: #f97316;
-  box-shadow: 0 0 20px #f97316;
-  background: rgba(249, 115, 22, 0.15);
+  border-color: rgba(234,179,8,0.5) !important;
+  border-style: solid !important;
+  background: rgba(234,179,8,0.05) !important;
 }
 
-/* RESPONSIVE */
+/* Glow top-edge cuando está seleccionado */
+.selectedGlow {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #eab308, transparent);
+  box-shadow: 0 0 20px 4px rgba(234,179,8,0.3);
+}
+
+/* Badge "Seleccionado" */
+.selectedBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(234,179,8,0.1);
+  border: 1px solid rgba(234,179,8,0.3);
+  color: #eab308;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.selectedDot {
+  width: 5px;
+  height: 5px;
+  background: #eab308;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(234,179,8,0.8);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.5); opacity: 0.5; }
+}
+
+/* ================================
+   CONTENIDO
+================================ */
+.cardIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.nombre {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #e7e5e4;
+  margin: 0 0 1.2rem;
+  line-height: 1;
+}
+
+/* Lista de detalles */
+.details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.83rem;
+  color: #57534e;
+  line-height: 1.5;
+}
+
+.detailIcon {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  margin-top: 1px;
+}
+
+.whatsapp {
+  color: #78716c;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.whatsapp:hover {
+  color: #eab308;
+}
+
+/* Descripción domicilio */
+.domicilioDesc {
+  font-size: 0.88rem;
+  color: #44403c;
+  line-height: 1.7;
+  margin: 0 0 auto;
+  font-weight: 300;
+}
+
+/* ================================
+   ACCIONES
+================================ */
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.8rem;
+}
+
+.btnRetiro,
+.btnDelivery {
+  flex: 1;
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Retiro: outline dorado */
+.btnRetiro {
+  background: transparent;
+  border: 1px solid rgba(234,179,8,0.35);
+  color: #eab308;
+}
+
+.btnRetiro:hover {
+  background: rgba(234,179,8,0.08);
+  border-color: rgba(234,179,8,0.6);
+}
+
+/* Delivery: sólido dorado */
+.btnDelivery {
+  background: linear-gradient(135deg, #eab308, #ca8a04);
+  color: #0a0a0f;
+  box-shadow: 0 4px 14px rgba(234,179,8,0.25);
+}
+
+.btnDelivery:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(234,179,8,0.4);
+}
+
+/* Cuando la card es solo domicilio, el botón ocupa todo el ancho */
+.btnDeliveryFull {
+  flex: 1;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .section h2 {
-    font-size: 2.2rem;
-  }
+  .titulo { font-size: 3.2rem; }
 }
 
 @media (max-width: 600px) {
-  .section {
-    padding: 4rem 1.5rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  .section { padding: 4rem 1rem; }
+  .grid { grid-template-columns: 1fr; }
+  .titulo { font-size: 2.6rem; }
+  .actions { flex-direction: column; }
 }

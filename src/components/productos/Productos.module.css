@@ -1,88 +1,153 @@
-/* CARD */
+/* ================================
+   CARD
+================================ */
 .card {
-  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
-  border-radius: 18px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(249, 115, 22, 0.15);
+  background: #0f0f18;
+  border: 1px solid rgba(234,179,8,0.1);
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 420px;
+  transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(249, 115, 22, 0.25);
-  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-color: rgba(234,179,8,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(234,179,8,0.08);
 }
 
-/* IMAGEN */
-.card img {
+.cardAgotado {
+  opacity: 0.55;
+}
+
+/* ================================
+   IMAGEN
+================================ */
+.imgWrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #14141f;
+}
+
+.img {
   width: 100%;
-  height: 220px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
 }
 
-.card:hover img {
+.card:hover .img {
   transform: scale(1.05);
 }
 
-/* NOMBRE */
-.card h3 {
-  font-size: 1.1rem;
+/* Badge categoría */
+.catBadge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(234,179,8,0.25);
+  color: #eab308;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.65rem;
   font-weight: 700;
-  color: #f8fafc;
-  margin-bottom: 0.5rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-/* DESCRIPCIÓN */
-.card p {
-  font-size: 0.9rem;
-  color: #94a3b8;
-  margin-bottom: 1rem;
-  min-height: 40px;
+/* Overlay agotado */
+.agotadoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,15,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #57534e;
 }
 
-/* PRECIO */
+/* ================================
+   CUERPO
+================================ */
+.body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.4rem;
+}
+
+.nombre {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e7e5e4;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+
+.descripcion {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #44403c;
+  line-height: 1.55;
+  font-weight: 300;
+  flex: 1;
+}
+
+/* ================================
+   FOOTER CARD
+================================ */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(234,179,8,0.08);
+  gap: 0.5rem;
+}
+
 .precio {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #f97316;
-  margin-bottom: 0.8rem;
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #eab308;
+  line-height: 1;
 }
 
-/* BADGE DISPONIBLE */
-.disponible {
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  width: fit-content;
+.addBtn {
+  background: linear-gradient(135deg, #eab308, #ca8a04);
+  color: #0a0a0f;
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-/* BADGE NO DISPONIBLE */
-.noDisponible {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  width: fit-content;
+.addBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(234,179,8,0.4);
 }
-.categoria {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #38bdf8;
-  margin-bottom: 0.5rem;
-  display: inline-block;
+
+.addBtn:disabled {
+  background: rgba(234,179,8,0.08);
+  color: #44403c;
+  cursor: not-allowed;
 }

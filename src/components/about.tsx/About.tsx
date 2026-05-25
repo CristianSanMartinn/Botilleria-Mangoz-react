@@ -8,18 +8,23 @@ const AboutUs = () => {
     <section className={styles.aboutUs} id="nosotros">
       <div className={styles.aboutContainer}>
         <div className={styles.aboutContent}>
-          
-          <div className={styles.aboutText}>
-            <h2>{title}</h2>
-            <h3 className={styles.subtitle}>{subtitle}</h3>
 
-            <p>{paragraphs[0]}</p>
-            <p>{paragraphs[1]}</p>
+          {/* Columna texto */}
+          <div className={styles.aboutText}>
+            <span className={styles.eyebrow}>Nuestra historia</span>
+            <h2>{title}</h2>
+            <p className={styles.subtitle}>{subtitle}</p>
+
+            {paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
 
             <div className={styles.aboutValues}>
               {values.map((value, idx) => (
                 <div key={idx} className={styles.valueItem}>
-                  <div className={styles.valueIcon}>{value.icon}</div>
+                  <div className={styles.valueIcon} aria-hidden="true">
+                    {value.icon}
+                  </div>
                   <div className={styles.valueText}>
                     <h4>{value.title}</h4>
                     <p>{value.description}</p>
@@ -29,11 +34,19 @@ const AboutUs = () => {
             </div>
           </div>
 
+          {/* Columna imagen */}
           <div className={styles.aboutImage}>
-            <div className={styles.aboutPhoto}>
-              <div className={styles.photoFrame}>{photoIcon}</div>
+            <div className={styles.photoOuter}>
+              {/* Anillo decorativo */}
+              <div className={styles.photoRing} aria-hidden="true" />
+
+              <div className={styles.photoFrame} aria-hidden="true">
+                {photoIcon}
+              </div>
+
               <div className={styles.photoBadge}>
-                <span>{photoBadge}</span>
+                <span className={styles.badgeDot} />
+                {photoBadge}
               </div>
             </div>
           </div>
