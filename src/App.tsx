@@ -34,18 +34,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-{/*
-  el orden de las pantallas es:
-  - Navbar            X
-  - Hero              X
-  - Offers            X
-  - Catalogo          X
-  - Events            X
-  - About             X
-  - ProductoCard      X
-  - Carrito
-  - sucursalCard      X se tiene que hablar
-  - Constacto         X
-  - footer
-  **/}
